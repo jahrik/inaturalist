@@ -67,12 +67,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     apt-get update
     apt-get install elasticsearch
     # Disable security to get rid of warnings
-    # "xpack.security.enabled: false"
+    grep -qxF 'xpack.security.enabled: false' /etc/elasticsearch/elasticsearch.yml || \
+      echo 'xpack.security.enabled: false' >> /etc/elasticsearch/elasticsearch.yml
     systemctl start elasticsearch
     systemctl enable elasticsearch
     # Install plugins
-    /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-kuromoji || true && \
-      systemctl restart elasticsearch
+    /usr/share/elasticsearch/bin/elasticsearch-plugin install \
+      analysis-kuromoji \
+      && systemctl restart elasticsearch || true
   }
 
   # Runs as vagrant user
@@ -96,7 +98,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     export PGHOST=0.0.0.0
     export PGUSER=postgres
     export PGPASSWORD=postgres
-    RAILS_ENV=development
+    export RAILS_ENV=development
     # edit config/deploy.rb
     # set :passenger_restart_with_touch, true
     ruby bin/setup

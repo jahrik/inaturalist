@@ -71,7 +71,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     systemctl start elasticsearch
     systemctl enable elasticsearch
     # Install plugins
-    /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-kuromoji || true
+    /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-kuromoji || true && \
+      systemctl restart elasticsearch
   }
 
   # Runs as vagrant user
@@ -119,6 +120,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Start the app!
     # rails s -b 127.0.0.1
     # rails s -b 0.0.0.0
-    rails s -b 192.168.56.11 &
+    rails s -b 192.168.56.11
   }
 end

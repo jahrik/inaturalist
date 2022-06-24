@@ -1,13 +1,15 @@
 # Example of a local database setup.
 login: &login
-  host: localhost
+  host: <%= ENV['PGHOST'] || 'localhost' %>
+  username: <%= ENV['PGUSER'] || 'postgres' %>
+  password: <%= ENV['PGPASSWORD'] || 'postgres' %>
   encoding: utf8
   adapter: postgis
   template: template_postgis
 
 development:
   <<: *login
-  database: inaturalist_development
+  database: <%= ENV['PGDB'] || 'inaturalist_development' %>
 
 test:
   <<: *login

@@ -1,5 +1,16 @@
-version: "2"
+version: "3.8"
 services:
+  rails:
+    container_name: inat_rails
+    image: inat_rails:latest
+    ports:
+      - 3000:3000
+    entrypoint: ./docker-entrypoint.sh
+    command: "bundle exec rails s -p 3000 -b 0.0.0.0"
+    depends_on:
+      - postgres
+      - elasticsearch
+
   redis:
     container_name: redis
     image: redis:6.0.3
@@ -8,15 +19,15 @@ services:
     volumes:
       - redis_data:/data
 
-  es:
-    container_name: es
+  elasticsearch:
+    container_name: elasticsearch
     image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
     environment:
       - discovery.type=single-node
     ports:
       - 9200:9200
     volumes:
-      - es_data:/usr/share/elasticsearch/data
+      - elasticsearch_data:/usr/share/elasticsearch/data
     command: >
       /bin/sh -c "bin/elasticsearch-plugin list | grep -q analysis-kuromoji
       || bin/elasticsearch-plugin install analysis-kuromoji;
@@ -28,18 +39,19 @@ services:
     ports:
       - 11211:11211
 
-  pg:
-    container_name: pg
+  postgres:
+    container_name: postgres
     image: postgis/postgis:12-3.0
     environment:
-      POSTGRES_USER: username
-      POSTGRES_PASSWORD: password
+      POSTGRES_USER: ${PGUSER}
+      POSTGRES_PASSWORD: ${PGPASSWORD}
+      POSTGRES_DB: ${PGDB}
     ports:
       - 5432:5432
     volumes:
-      - pg_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
   redis_data:
-  es_data:
-  pg_data:
+  elasticsearch_data:
+  postgres_data:

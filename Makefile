@@ -37,7 +37,7 @@ stop:
 
 development:
 
-	# Still desiding to put this in the entrypoint or here...
+	# Still deciding to put this in the entrypoint or here...
 	-docker exec -t inat_rails rake es:rebuild
 	-docker exec -t inat_rails rails r "Site.create( name: 'iNaturalist', url: 'http://localhost:3000' )"
 	-docker exec -t inat_rails rails r "User.create( login: 'testerson', password: 'tester', password_confirmation: 'tester', email: 'test@test.com' )"

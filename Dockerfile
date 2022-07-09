@@ -6,12 +6,12 @@ FROM ruby:2.6.5
 
 # container_name of the postgres instance in the docker-compose.yml file.
 # It will be able to see this 'postgres' host if they're both running in the same docker network
-ARG PGHOST=postgres
+ARG PGHOST=pg
 # Overwrite these at build time with --build-arg PGPASSWORD=$PGPASSWORD, etc...
 ARG PGUSER=postgres
 ARG PGPASSWORD=postgres
 ARG RAILS_ENV=development
-ARG ELASTICSEARCH_HOST?=http://elasticsearch:9200
+ARG ELASTICSEARCH_HOST?=http://es:9200
 
 ENV PGHOST="${PGHOST}" \
     PGUSER="${PGUSER}" \

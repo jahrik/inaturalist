@@ -296,7 +296,7 @@ GEM
     concurrent-ruby (1.3.7)
     crack (0.4.5)
       rexml
-    crass (1.0.7)
+    crass (1.0.8)
     csv (3.3.5)
     cypress-on-rails (1.20.0)
       rack
@@ -336,7 +336,7 @@ GEM
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    doorkeeper (5.6.6)
+    doorkeeper (5.9.1)
       railties (>= 5)
     drb (2.2.3)
     ed25519 (1.3.0)
@@ -410,7 +410,7 @@ GEM
       mutex_m
       nkf
       rack (>= 2.0, < 4)
-    i18n (1.14.8)
+    i18n (1.15.2)
       concurrent-ruby (~> 1.0)
     i18n-inflector (2.6.7)
       i18n (>= 0.4.1)
@@ -453,9 +453,9 @@ GEM
       rake
     mini_mime (1.1.5)
     mini_portile2 (2.8.9)
-    minitest (6.0.5)
+    minitest (6.1.0)
       drb (~> 2.0)
-      prism (~> 1.5)
+      prism (>= 1.5, < 3)
     multi_json (1.15.0)
     multi_xml (0.8.0)
       bigdecimal (>= 3.1, < 5)
@@ -545,12 +545,15 @@ GEM
       racc
     patron (0.13.3)
     pg (1.5.9)
-    prism (1.9.0)
+    prism (2.1.0)
+    prism (2.1.0-arm64-darwin)
+    prism (2.1.0-x86_64-darwin)
+    prism (2.1.0-x86_64-linux-gnu)
     public_suffix (7.0.5)
     puma (7.2.1)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.23)
+    rack (2.2.25)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
     rack-mobile-detect (0.4.0)
@@ -560,7 +563,7 @@ GEM
       ruby-openid (>= 2.1.8)
     rack-protection (3.0.5)
       rack
-    rack-test (2.2.0)
+    rack-test (2.3.0)
       rack (>= 1.3)
     rack-tracker (1.13.0)
       activesupport (>= 3.0)
@@ -585,7 +588,7 @@ GEM
       actionpack (>= 5.0.1.rc1)
       actionview (>= 5.0.1.rc1)
       activesupport (>= 5.0.1.rc1)
-    rails-dom-testing (2.2.0)
+    rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
@@ -608,7 +611,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
     rainbow (3.1.1)
-    rake (13.2.1)
+    rake (13.4.2)
     rakismet (1.5.4)
     rdoc (6.3.4.1)
     redcarpet (3.5.1)
@@ -744,7 +747,7 @@ GEM
       climate_control
     terser (1.2.5)
       execjs (>= 0.3.0, < 3)
-    thor (1.4.0)
+    thor (1.5.0)
     tilt (2.0.10)
     timeout (0.6.1)
     tzinfo (2.0.6)
@@ -783,7 +786,7 @@ GEM
     ya2yaml (0.31)
     yajl-ruby (1.4.3)
     yui-compressor (0.12.0)
-    zeitwerk (2.7.5)
+    zeitwerk (2.8.3)
 
 PLATFORMS
   arm64-darwin
